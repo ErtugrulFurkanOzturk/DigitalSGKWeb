@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ABPYRSubeler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubeKodu" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SubeAdi" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="200" />
+          <Property Name="IsyeriKodu" Type="nvarchar" MaxLength="50" />
+          <Property Name="SistemSifresi" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsyeriSifresi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Visible" Type="bit" />
+          <Property Name="Musteri" Type="nvarchar" MaxLength="200" />
+          <Property Name="Bayi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tamamlandi" Type="bit" />
+          <Property Name="Sebep" Type="nvarchar" MaxLength="50" />
+          <Property Name="SicilNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Unvan" Type="nvarchar" MaxLength="50" />
+          <Property Name="VKN" Type="nvarchar" MaxLength="50" />
+          <Property Name="VergiDairesi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adres" Type="nvarchar" MaxLength="50" />
+          <Property Name="DisKapi" Type="nvarchar" MaxLength="50" />
+          <Property Name="IcKapi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ilce" Type="nvarchar" MaxLength="50" />
+          <Property Name="Il" Type="nvarchar" MaxLength="50" />
+          <Property Name="SGMKod" Type="nvarchar" MaxLength="50" />
+          <Property Name="SGMAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="EskiOran" Type="real" />
+        </EntityType>
+        <EntityType Name="Musteriler">
+          <Key>
+            <PropertyRef Name="MusteriKodu" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MusteriKodu" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="MusteriAdi" Type="nvarchar" MaxLength="200" />
+          <Property Name="BayiKodu" Type="nvarchar" MaxLength="50" />
+          <Property Name="BayiMusteriKodu" Type="nvarchar" MaxLength="50" />
+          <Property Name="Durumu" Type="smallint" />
+          <Property Name="Faturalandi" Type="bit" />
+          <Property Name="createdBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="BayiCounter" Type="int" />
+          <Property Name="AltiAylikTutar" Type="real" />
+          <Property Name="ilgiliKisi" Type="nvarchar" MaxLength="200" />
+          <Property Name="Email1" Type="nvarchar" MaxLength="200" />
+          <Property Name="Email2" Type="nvarchar" MaxLength="200" />
+          <Property Name="Email3" Type="nvarchar" MaxLength="200" />
+          <Property Name="Tel1" Type="nvarchar" MaxLength="200" />
+          <Property Name="Tel2" Type="nvarchar" MaxLength="200" />
+          <Property Name="isRutin" Type="bit" />
+          <Property Name="RutinDurumu" Type="smallint" />
+          <Property Name="Tip" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tutar" Type="real" />
+          <Property Name="Bayi1Oran" Type="real" />
+          <Property Name="Bayi2Oran" Type="real" />
+          <Property Name="VD" Type="nvarchar" MaxLength="50" />
+          <Property Name="VKN" Type="nvarchar" MaxLength="50" />
+          <Property Name="Il" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ilce" Type="nvarchar" MaxLength="50" />
+          <Property Name="TeklifFiyati" Type="real" />
+          <Property Name="SatisFiyati" Type="real" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="200" />
+          <Property Name="LostReason" Type="smallint" />
+          <Property Name="Statu" Type="smallint" />
+          <Property Name="SatisTarihi" Type="date" />
+          <Property Name="Adres" Type="nvarchar" MaxLength="200" />
+          <Property Name="Unvan" Type="nvarchar" MaxLength="50" />
+          <Property Name="SatisDurumu" Type="smallint" />
+          <Property Name="ExpireDate" Type="date" />
+          <Property Name="CRM_Ciro" Type="nvarchar" MaxLength="50" />
+          <Property Name="CRM_PMA" Type="nvarchar" MaxLength="50" />
+          <Property Name="CRM_Stratejik" Type="nvarchar" MaxLength="50" />
+          <Property Name="EVizite" Type="bit" />
+          <Property Name="isGecmisDonemRutin" Type="bit" />
+          <Property Name="SMMM" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_ABPYRSubeler_Musteriler">
+          <End Role="Musteriler" Type="Self.Musteriler" Multiplicity="0..1" />
+          <End Role="ABPYRSubeler" Type="Self.ABPYRSubeler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Musteriler">
+              <PropertyRef Name="MusteriKodu" />
+            </Principal>
+            <Dependent Role="ABPYRSubeler">
+              <PropertyRef Name="Musteri" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="ABPYRSubeler" EntityType="Self.ABPYRSubeler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Musteriler" EntityType="Self.Musteriler" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ABPYRSubeler_Musteriler" Association="Self.FK_ABPYRSubeler_Musteriler">
+            <End Role="Musteriler" EntitySet="Musteriler" />
+            <End Role="ABPYRSubeler" EntitySet="ABPYRSubeler" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ABPYRSubeler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubeKodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SubeAdi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KullaniciAdi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IsyeriKodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SistemSifresi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsyeriSifresi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Visible" Type="Boolean" />
+          <Property Name="Musteri" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Bayi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tamamlandi" Type="Boolean" />
+          <Property Name="Sebep" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SicilNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Unvan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VKN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VergiDairesi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DisKapi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IcKapi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ilce" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Il" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SGMKod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SGMAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EskiOran" Type="Single" />
+          <NavigationProperty Name="Musteriler" Relationship="Self.FK_ABPYRSubeler_Musteriler" FromRole="ABPYRSubeler" ToRole="Musteriler" />
+        </EntityType>
+        <EntityType Name="Musteriler">
+          <Key>
+            <PropertyRef Name="MusteriKodu" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MusteriKodu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MusteriAdi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="BayiKodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BayiMusteriKodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Durumu" Type="Int16" />
+          <Property Name="Faturalandi" Type="Boolean" />
+          <Property Name="createdBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="BayiCounter" Type="Int32" />
+          <Property Name="AltiAylikTutar" Type="Single" />
+          <Property Name="ilgiliKisi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Email1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Email2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Email3" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Tel1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Tel2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="isRutin" Type="Boolean" />
+          <Property Name="RutinDurumu" Type="Int16" />
+          <Property Name="Tip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tutar" Type="Single" />
+          <Property Name="Bayi1Oran" Type="Single" />
+          <Property Name="Bayi2Oran" Type="Single" />
+          <Property Name="VD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VKN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Il" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ilce" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TeklifFiyati" Type="Single" />
+          <Property Name="SatisFiyati" Type="Single" />
+          <Property Name="Aciklama" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="LostReason" Type="Int16" />
+          <Property Name="Statu" Type="Int16" />
+          <Property Name="SatisTarihi" Type="DateTime" Precision="0" />
+          <Property Name="Adres" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Unvan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SatisDurumu" Type="Int16" />
+          <Property Name="ExpireDate" Type="DateTime" Precision="0" />
+          <Property Name="CRM_Ciro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CRM_PMA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CRM_Stratejik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EVizite" Type="Boolean" />
+          <Property Name="isGecmisDonemRutin" Type="Boolean" />
+          <Property Name="SMMM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ABPYRSubeler" Relationship="Self.FK_ABPYRSubeler_Musteriler" FromRole="Musteriler" ToRole="ABPYRSubeler" />
+        </EntityType>
+        <Association Name="FK_ABPYRSubeler_Musteriler">
+          <End Role="Musteriler" Type="Self.Musteriler" Multiplicity="0..1" />
+          <End Role="ABPYRSubeler" Type="Self.ABPYRSubeler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Musteriler">
+              <PropertyRef Name="MusteriKodu" />
+            </Principal>
+            <Dependent Role="ABPYRSubeler">
+              <PropertyRef Name="Musteri" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ABPYRSubeler" EntityType="Self.ABPYRSubeler" />
+          <EntitySet Name="Musteriler" EntityType="Self.Musteriler" />
+          <AssociationSet Name="FK_ABPYRSubeler_Musteriler" Association="Self.FK_ABPYRSubeler_Musteriler">
+            <End Role="Musteriler" EntitySet="Musteriler" />
+            <End Role="ABPYRSubeler" EntitySet="ABPYRSubeler" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="DEntities">
+          <EntitySetMapping Name="ABPYRSubeler">
+            <EntityTypeMapping TypeName="Model.ABPYRSubeler">
+              <MappingFragment StoreEntitySet="ABPYRSubeler">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SubeKodu" ColumnName="SubeKodu" />
+                <ScalarProperty Name="SubeAdi" ColumnName="SubeAdi" />
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="IsyeriKodu" ColumnName="IsyeriKodu" />
+                <ScalarProperty Name="SistemSifresi" ColumnName="SistemSifresi" />
+                <ScalarProperty Name="IsyeriSifresi" ColumnName="IsyeriSifresi" />
+                <ScalarProperty Name="Visible" ColumnName="Visible" />
+                <ScalarProperty Name="Musteri" ColumnName="Musteri" />
+                <ScalarProperty Name="Bayi" ColumnName="Bayi" />
+                <ScalarProperty Name="Tamamlandi" ColumnName="Tamamlandi" />
+                <ScalarProperty Name="Sebep" ColumnName="Sebep" />
+                <ScalarProperty Name="SicilNo" ColumnName="SicilNo" />
+                <ScalarProperty Name="Unvan" ColumnName="Unvan" />
+                <ScalarProperty Name="VKN" ColumnName="VKN" />
+                <ScalarProperty Name="VergiDairesi" ColumnName="VergiDairesi" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="DisKapi" ColumnName="DisKapi" />
+                <ScalarProperty Name="IcKapi" ColumnName="IcKapi" />
+                <ScalarProperty Name="Ilce" ColumnName="Ilce" />
+                <ScalarProperty Name="Il" ColumnName="Il" />
+                <ScalarProperty Name="SGMKod" ColumnName="SGMKod" />
+                <ScalarProperty Name="SGMAd" ColumnName="SGMAd" />
+                <ScalarProperty Name="EskiOran" ColumnName="EskiOran" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Musteriler">
+            <EntityTypeMapping TypeName="Model.Musteriler">
+              <MappingFragment StoreEntitySet="Musteriler">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MusteriKodu" ColumnName="MusteriKodu" />
+                <ScalarProperty Name="MusteriAdi" ColumnName="MusteriAdi" />
+                <ScalarProperty Name="BayiKodu" ColumnName="BayiKodu" />
+                <ScalarProperty Name="BayiMusteriKodu" ColumnName="BayiMusteriKodu" />
+                <ScalarProperty Name="Durumu" ColumnName="Durumu" />
+                <ScalarProperty Name="Faturalandi" ColumnName="Faturalandi" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="BayiCounter" ColumnName="BayiCounter" />
+                <ScalarProperty Name="AltiAylikTutar" ColumnName="AltiAylikTutar" />
+                <ScalarProperty Name="ilgiliKisi" ColumnName="ilgiliKisi" />
+                <ScalarProperty Name="Email1" ColumnName="Email1" />
+                <ScalarProperty Name="Email2" ColumnName="Email2" />
+                <ScalarProperty Name="Email3" ColumnName="Email3" />
+                <ScalarProperty Name="Tel1" ColumnName="Tel1" />
+                <ScalarProperty Name="Tel2" ColumnName="Tel2" />
+                <ScalarProperty Name="isRutin" ColumnName="isRutin" />
+                <ScalarProperty Name="RutinDurumu" ColumnName="RutinDurumu" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+                <ScalarProperty Name="Tutar" ColumnName="Tutar" />
+                <ScalarProperty Name="Bayi1Oran" ColumnName="Bayi1Oran" />
+                <ScalarProperty Name="Bayi2Oran" ColumnName="Bayi2Oran" />
+                <ScalarProperty Name="VD" ColumnName="VD" />
+                <ScalarProperty Name="VKN" ColumnName="VKN" />
+                <ScalarProperty Name="Il" ColumnName="Il" />
+                <ScalarProperty Name="Ilce" ColumnName="Ilce" />
+                <ScalarProperty Name="TeklifFiyati" ColumnName="TeklifFiyati" />
+                <ScalarProperty Name="SatisFiyati" ColumnName="SatisFiyati" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="LostReason" ColumnName="LostReason" />
+                <ScalarProperty Name="Statu" ColumnName="Statu" />
+                <ScalarProperty Name="SatisTarihi" ColumnName="SatisTarihi" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="Unvan" ColumnName="Unvan" />
+                <ScalarProperty Name="SatisDurumu" ColumnName="SatisDurumu" />
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+                <ScalarProperty Name="CRM_Ciro" ColumnName="CRM_Ciro" />
+                <ScalarProperty Name="CRM_PMA" ColumnName="CRM_PMA" />
+                <ScalarProperty Name="CRM_Stratejik" ColumnName="CRM_Stratejik" />
+                <ScalarProperty Name="EVizite" ColumnName="EVizite" />
+                <ScalarProperty Name="isGecmisDonemRutin" ColumnName="isGecmisDonemRutin" />
+                <ScalarProperty Name="SMMM" ColumnName="SMMM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

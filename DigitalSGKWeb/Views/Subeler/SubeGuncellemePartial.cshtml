@@ -1,0 +1,47 @@
+﻿@model DigitalSGKWeb.Models.EntityFramework.ABPYRSubeler
+
+
+<!DOCTYPE html>
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal3">
+    Şube GÜncelle
+</button>
+<div class="modal" id="Modal3">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Şube Güncelleme Ekranı</h4>
+            </div>
+            <form method="post" action="/Subeler/SubeGuncelle">
+                <div class="modal-body">
+                    <label>Şube Adı</label>
+                    <input type="text" name="SubeAdi" class="form-control" required="" maxlength="200" />
+                </div>
+                <div class="modal-body">
+                    <label>Şube Numarası</label>
+                    <input type="text" name="Id" class="form-control" required="" maxlength="50" />
+                    <br />
+                    <button class="btn btn-info" onclick="myFunction()">Şubeyi Kaydet</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function myFunction() {
+        swal("Şube başarıyla kaydedilmiştir....!", "You clicked the button!", "success");
+        
+    }
+</script>

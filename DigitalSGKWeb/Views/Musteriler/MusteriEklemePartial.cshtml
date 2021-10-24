@@ -1,0 +1,59 @@
+﻿@model DigitalSGKWeb.Models.EntityFramework.Musteriler
+
+
+
+<!DOCTYPE html>
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal2">
+    Müşteri ekle
+</button>
+<div class="modal" id="Modal2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Müşteri Ekleme Ekranı</h4>
+            </div>
+            <form method="post" action="/Musteriler/MusteriEkleme">
+                <div class="modal-body">
+                    <label>Müşteri Adı</label>
+                    <input type="text" name="MusteriAdi" class="form-control" required="" maxlength="200" />
+                </div>
+                <div class="modal-body">
+                    <label>Müşteri Kodu</label>
+                    <input type="text" name="MusteriKodu" class="form-control" required="" maxlength="200" />
+
+                </div>
+                <div class="modal-body">
+                    <label for="party">Oluştrulma Tarihi</label>
+                    <input id="party" type="text" name="createdDate" value="2017-06-01T08:30" />
+                </div>
+                <div class="modal-body">
+                    <label for="balloons">Müşteri Durumu (1-100):</label>
+                    <input type="number" id="balloons" name="Durumu" min="0" max="100" required />
+                    <span class="validity"></span>
+                </div>
+                <div>
+                    <input type="submit" onclick="myFunction()">
+                    @*<br />
+                    <button class="btn btn-info">Müşteriyi Kaydet</button>*@
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function myFunction() {
+        alert("Ekleme işlemi başarıyla gerçekleştirilmiştir.");
+    }
+</script>

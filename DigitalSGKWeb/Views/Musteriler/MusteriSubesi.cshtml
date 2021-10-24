@@ -1,0 +1,28 @@
+﻿@model IEnumerable<DigitalSGKWeb.Models.EntityFramework.ABPYRSubeler>
+@{
+    ViewBag.Title = "MusteriSubesi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>MusteriSubesi</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Müşteri Adı</th>
+            <th>Müşteri Kodu</th>
+            <th>Müşterinin şubesinin adı</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var subeler in Model)
+        {
+            <tr>
+                <td>@subeler.Musteriler.MusteriAdi</td>
+                <td>@subeler.Musteriler.MusteriKodu</td>
+                <td>@subeler.SubeAdi</td>
+            </tr>
+        }
+
+    </tbody>
+</table>

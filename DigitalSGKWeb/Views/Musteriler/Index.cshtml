@@ -1,0 +1,87 @@
+﻿
+@using DigitalSGKWeb.Models.EntityFramework
+@model List<Musteriler>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+
+
+<h2>Müşteriler Listesi</h2>
+
+
+@Html.Action("MusteriEklemePartial")
+
+
+<table id="myTable" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Müşteri Kodu</th>
+            <th>Müşteri Adı</th>
+            <th>Oluşturulma Tarihi</th>
+            <th>Müşteri Durumu</th>
+            <th>Müşteri güncelleme</th>
+            <th>Şubesi</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @foreach (var musteriler in Model)
+        {
+            <tr>
+                <td>@musteriler.MusteriKodu</td>
+                <td>@musteriler.MusteriAdi</td>
+                <td>@musteriler.createdDate.Value.ToString("dd-MM-yyyy")</td>
+                <td>@musteriler.Durumu</td>
+                <td>@Html.Action("MusteriGuncellemePartial")</td>
+                <td>@Html.ActionLink("Şubeleri göster", "MusteriSubesi", "Musteriler", new { id = musteriler.MusteriKodu }, new { @class = "btn btn-primary" })</td>
+                <td></td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+
+<script>
+    $(".deger").click(function () {
+        var index1 = $(this).data("musteriadi");
+        $(".modal-body>textarea").html(index1);
+
+    });
+</script>
+
+<link href="~/Content/DataTables/css/dataTables.bootstrap4.css" rel="stylesheet" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+<script>
+    $('#myTable').dataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json"
+        }
+    });
+</script>
+
+
+
+

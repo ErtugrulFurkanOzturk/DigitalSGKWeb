@@ -1,0 +1,51 @@
+﻿@model DigitalSGKWeb.Models.EntityFramework.Musteriler
+
+
+<!DOCTYPE html>
+
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal4">
+    Müşteri GÜncelle
+</button>
+<div class="modal" id="Modal4">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Müşteri Güncelleme Ekranı</h4>
+            </div>
+            <form method="post" action="/Musteriler/MusteriGuncelle">
+                <div class="modal-body">
+                    @Html.LabelFor(m=>m.MusteriKodu)
+                    @Html.TextBoxFor(m=>m.MusteriKodu)
+                    @*<label>Müşteri Kodu</label>
+                    <input type="text" name="MusteriKodu" class="form-control" required="" maxlength="200" />*@
+                </div>
+                <div class="modal-body">
+                    <label>Müşteri Adı</label>
+                    <input type="text" name="MusteriAdi" class="form-control" required="" maxlength="200" />
+                </div>
+                <div class="modal-body">
+                    <label for="party">Oluştrulma Tarihi</label>
+                    <input id="party" type="text" name="createdDate" value="2017-06-01T08:30" />
+                </div>
+                <div class="modal-body">
+                    <label for="balloons">Müşteri Durumu (1-100):</label>
+                    <input type="number" id="balloons" name="Durumu" min="0" max="100" required />
+                    <span class="validity"></span>
+                </div>
+                <div>
+                    <input type="submit" onclick="myFunction()">
+
+                   
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function myFunction() {
+        alert("Güncelleme işlemi başarıyla gerçekleştirilmiştir.");
+    }
+</script>

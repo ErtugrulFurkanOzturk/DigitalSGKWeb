@@ -1,0 +1,68 @@
+﻿@using DigitalSGKWeb.Models.EntityFramework
+@model List<ABPYRSubeler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+@*<a href="/Subeler/SubeEkle" class="btn btn-primary">Şube ekle</a>*@
+
+@Html.Action("SubeEklemePartial")
+
+<h2>Şubeler Listesi</h2>
+
+<table id="myTable" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Şube Kodu</th>
+            <th>Şube Adı</th>
+            <th>Müşteri Kodu</th>
+            <th>Müşteri Adı</th>
+            <th>Şube adını güncelleme</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var subeler in Model)
+        {
+            <tr>
+                <td>@subeler.SubeKodu</td>
+                <td>@subeler.SubeAdi</td>
+                <td>@subeler.Musteriler.MusteriKodu</td>
+                <td>@subeler.Musteriler.MusteriAdi</td>
+                @*<td><a class="btn btn-primary" href="/Subeler/SubeGetir/@subeler.Id">Güncelle</a></td>*@
+                <td>@Html.Action("SubeGuncellemePartial")</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+<link href="~/Content/DataTables/css/dataTables.bootstrap4.css" rel="stylesheet" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+<script>
+    $('#myTable').dataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json"
+        }
+    });
+</script>

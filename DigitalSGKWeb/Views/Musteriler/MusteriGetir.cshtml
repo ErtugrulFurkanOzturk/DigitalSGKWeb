@@ -1,0 +1,21 @@
+﻿@model DigitalSGKWeb.Models.EntityFramework.Musteriler
+@{
+    ViewBag.Title = "MusteriGetir";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<!DOCTYPE html>
+@using (Html.BeginForm("MusteriGuncelle", "Musteriler", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.MusteriKodu)
+        @Html.TextBoxFor(m => m.MusteriKodu)
+    </div>
+}
+
+
+
+

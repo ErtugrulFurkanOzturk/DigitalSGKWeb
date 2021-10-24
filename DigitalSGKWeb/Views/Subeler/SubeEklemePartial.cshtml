@@ -1,0 +1,55 @@
+﻿@model DigitalSGKWeb.Models.EntityFramework.ABPYRSubeler
+
+<!DOCTYPE html>
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal1">
+    Şube ekle
+</button>
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Şube Ekleme Ekranı</h4>
+            </div>
+            <form method="post" action="/Subeler/SubeEkle">
+                <div class="modal-body">
+                    <label>Şube Adı</label>
+                    <input type="text" name="SubeAdi" class="form-control" required="" maxlength="200" />
+                </div>
+                <div class="modal-body">
+                    <label>Şube Kodu</label>
+                    <input type="text" name="SubeKodu" class="form-control" required="" maxlength="50" />
+
+                </div>
+                <div class="modal-body">
+                        <label>Müşteri Seçiniz</label>
+                        @Html.DropDownListFor(m => m.Musteriler.MusteriKodu, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+                        <br />
+                        @*<button class="btn btn-info" onclick="myFunction()">Şubeyi Kaydet</button>*@
+                    <input type="button" value="Kaydet" name="alertMessage" id="mesaj" />
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    //function myFunction() {
+    //    swal("Şube başarıyla kaydedilmiştir....!", "You clicked the button!", "success");
+    //}
+    $(document).ready(function () {
+        $("#mesaj").click(function () {
+            swal("Şube başarıyla kaydedilmiştir....!", "You clicked the button!", "success");
+        });
+    });
+</script>
